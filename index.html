@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -16,353 +15,370 @@
             --gray-dark: #333333;
         }
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: 'Cormorant Garamond', serif;
-        background: var(--white);
-        color: var(--black);
-        line-height: 1.6;
-        overflow-x: hidden;
-    }
-
-    .header {
-        height: 70vh;
-        background: linear-gradient(135deg, rgba(126, 168, 148, 0.25) 0%, rgba(168, 213, 186, 0.2) 100%);
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-    }
-
-    .header::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: 
-            radial-gradient(circle at 30% 40%, rgba(255,255,255,0.6) 0%, transparent 60%),
-            radial-gradient(circle at 70% 60%, rgba(126, 168, 148, 0.15) 0%, transparent 50%);
-        pointer-events: none;
-    }
-
-    .header-overlay {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-family: 'Inter', sans-serif;
-        font-size: clamp(100px, 15vw, 240px);
-        font-weight: 300;
-        color: rgba(200, 200, 200, 0.15);
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        pointer-events: none;
-        white-space: nowrap;
-        z-index: 1;
-    }
-
-    .header-content {
-        position: relative;
-        z-index: 2;
-        text-align: center;
-        padding: 0 20px;
-    }
-
-    .header-title {
-        font-family: 'Inter', sans-serif;
-        font-size: clamp(12px, 1.5vw, 16px);
-        font-weight: 500;
-        letter-spacing: 0.3em;
-        text-transform: uppercase;
-        color: #2c3e3a;
-        margin-bottom: 20px;
-    }
-
-    .header-subtitle {
-        font-size: clamp(32px, 5vw, 56px);
-        font-weight: 300;
-        color: #1a1a1a;
-        letter-spacing: 0.02em;
-        line-height: 1.2;
-    }
-
-    .divider {
-        width: 100%;
-        height: 1px;
-        background: #e0e0e0;
-        margin: 0;
-    }
-
-    .intro-section {
-        max-width: 900px;
-        margin: 120px auto;
-        padding: 0 60px;
-    }
-
-    .intro-title {
-        font-family: 'Inter', sans-serif;
-        font-size: 14px;
-        font-weight: 500;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--gray-mid);
-        margin-bottom: 40px;
-    }
-
-    .intro-text {
-        font-size: 20px;
-        line-height: 1.9;
-        color: var(--gray-dark);
-        font-weight: 300;
-    }
-
-    .timeline {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 60px 120px;
-    }
-
-    .timeline-item {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 80px;
-        margin-bottom: 180px;
-        align-items: center;
-        opacity: 0;
-        animation: fadeInTimeline 0.8s ease forwards;
-    }
-
-    .timeline-item:nth-child(even) {
-        direction: rtl;
-    }
-
-    .timeline-item:nth-child(even) > * {
-        direction: ltr;
-    }
-
-    @keyframes fadeInTimeline {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
-    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
-    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
-    .timeline-item:nth-child(4) { animation-delay: 0.4s; }
-    .timeline-item:nth-child(5) { animation-delay: 0.5s; }
-    .timeline-item:nth-child(6) { animation-delay: 0.6s; }
-
-    .timeline-content {
-        padding: 0;
-    }
-
-    .date {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 100px;
-        font-weight: 300;
-        color: transparent;
-        -webkit-text-stroke: 2px #1a1a1a;
-        text-stroke: 2px #1a1a1a;
-        margin-bottom: 35px;
-        line-height: 1;
-        letter-spacing: 0.05em;
-    }
-
-    .event-title {
-        font-family: 'Inter', sans-serif;
-        font-size: 26px;
-        font-weight: 500;
-        color: var(--black);
-        margin-bottom: 30px;
-        line-height: 1.4;
-        letter-spacing: -0.02em;
-    }
-
-    .event-description {
-        font-size: 17px;
-        line-height: 1.8;
-        color: var(--gray-mid);
-        font-weight: 300;
-    }
-
-    .timeline-image {
-        overflow: hidden;
-        height: 500px;
-        position: relative;
-        background: var(--gray-light);
-    }
-
-    .timeline-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: grayscale(100%) contrast(1.1);
-        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .timeline-image:hover img {
-        transform: scale(1.03);
-    }
-
-    .image-placeholder {
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #e8e8e8, #f5f5f5);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Inter', sans-serif;
-        font-size: 14px;
-        color: var(--gray-mid);
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        font-weight: 400;
-    }
-
-    footer {
-        background: var(--black);
-        color: var(--white);
-        padding: 80px 60px;
-    }
-
-    .footer-content {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 60px;
-    }
-
-    .footer-section h4 {
-        font-family: 'Inter', sans-serif;
-        font-size: 12px;
-        font-weight: 500;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        margin-bottom: 20px;
-        opacity: 0.5;
-    }
-
-    .footer-section ul {
-        list-style: none;
-    }
-
-    .footer-section ul li {
-        font-size: 15px;
-        margin-bottom: 12px;
-        opacity: 0.7;
-        font-weight: 300;
-    }
-
-    .footer-bottom {
-        max-width: 1400px;
-        margin: 60px auto 0;
-        padding-top: 30px;
-        border-top: 1px solid rgba(255,255,255,0.1);
-        text-align: center;
-        font-size: 13px;
-        opacity: 0.5;
-        font-family: 'Inter', sans-serif;
-    }
-
-    @media (max-width: 968px) {
-        .timeline-item {
-            grid-template-columns: 1fr;
-            gap: 40px;
-            margin-bottom: 120px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .timeline-item:nth-child(even) {
-            direction: ltr;
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .header {
-            height: 60vh;
+            height: 70vh;
+            background: linear-gradient(135deg, rgba(126, 168, 148, 0.25) 0%, rgba(168, 213, 186, 0.2) 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(255,255,255,0.6) 0%, transparent 60%),
+                radial-gradient(circle at 70% 60%, rgba(126, 168, 148, 0.15) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .header-overlay {
-            font-size: 80px;
-            opacity: 0.8;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(100px, 15vw, 240px);
+            font-weight: 300;
+            color: rgba(200, 200, 200, 0.15);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 20px;
         }
 
         .header-title {
-            font-size: 11px;
-            margin-bottom: 15px;
-        }
-
-        .header-subtitle {
-            font-size: 28px;
-        }
-
-        .date {
-            font-size: 72px;
-            -webkit-text-stroke: 1.5px var(--black);
-            margin-bottom: 25px;
-        }
-
-        .event-title {
-            font-size: 22px;
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(12px, 1.5vw, 16px);
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #2c3e3a;
             margin-bottom: 20px;
         }
 
-        .event-description {
-            font-size: 16px;
-            line-height: 1.7;
+        .header-subtitle {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 300;
+            color: #1a1a1a;
+            letter-spacing: 0.02em;
+            line-height: 1.2;
         }
 
-        .footer-content {
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        .timeline {
-            padding: 0 30px 80px;
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: #e0e0e0;
+            margin: 0;
         }
 
         .intro-section {
-            padding: 0 30px;
-            margin: 80px auto;
+            max-width: 900px;
+            margin: 120px auto;
+            padding: 0 60px;
+        }
+
+        .intro-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray-mid);
+            margin-bottom: 40px;
         }
 
         .intro-text {
-            font-size: 18px;
-            line-height: 1.8;
-        }
-    }
-
-    @media (max-width: 640px) {
-        .footer-content {
-            grid-template-columns: 1fr;
+            font-size: 20px;
+            line-height: 1.9;
+            color: var(--gray-dark);
+            font-weight: 300;
         }
 
-        .header-overlay {
-            font-size: 60px;
+        .timeline {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px 120px;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 180px;
+            align-items: center;
+            opacity: 0;
+            animation: fadeInTimeline 0.8s ease forwards;
+        }
+
+        .timeline-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .timeline-item:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        @keyframes fadeInTimeline {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+
+        .timeline-content {
+            padding: 0;
         }
 
         .date {
-            font-size: 64px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 100px;
+            font-weight: 300;
+            color: transparent;
+            -webkit-text-stroke: 2px #1a1a1a;
+            text-stroke: 2px #1a1a1a;
+            margin-bottom: 35px;
+            line-height: 1;
+            letter-spacing: 0.05em;
+        }
+
+        .event-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 26px;
+            font-weight: 500;
+            color: var(--black);
+            margin-bottom: 30px;
+            line-height: 1.4;
+            letter-spacing: -0.02em;
+        }
+
+        .event-description {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--gray-mid);
+            font-weight: 300;
         }
 
         .timeline-image {
-            height: 350px;
+            overflow: hidden;
+            border-radius: 16px;
+            height: 500px;
+            position: relative;
+            background: var(--gray-light);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
-    }
-</style>
-    
+
+        .timeline-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            display: block;
+        }
+
+        .timeline-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e8e8e8, #f5f5f5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: var(--gray-mid);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 80px 60px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px;
+        }
+
+        .footer-section h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            font-size: 15px;
+            margin-bottom: 12px;
+            opacity: 0.7;
+            font-weight: 300;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 60px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 13px;
+            opacity: 0.5;
+            font-family: 'Inter', sans-serif;
+        }
+
+        @media (max-width: 968px) {
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                margin-bottom: 120px;
+            }
+
+            .timeline-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            .header {
+                height: 60vh;
+            }
+
+            .header-overlay {
+                font-size: 80px;
+                opacity: 0.8;
+            }
+
+            .header-title {
+                font-size: 11px;
+                margin-bottom: 15px;
+            }
+
+            .header-subtitle {
+                font-size: 28px;
+            }
+
+            .date {
+                font-size: 72px;
+                -webkit-text-stroke: 1.5px var(--black);
+                margin-bottom: 25px;
+            }
+
+            .event-title {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+
+            .event-description {
+                font-size: 16px;
+                line-height: 1.7;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            .timeline {
+                padding: 0 30px 80px;
+            }
+
+            .intro-section {
+                padding: 0 30px;
+                margin: 80px auto;
+            }
+
+            .intro-text {
+                font-size: 18px;
+                line-height: 1.8;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .header-overlay {
+                font-size: 60px;
+            }
+
+            .date {
+                font-size: 64px;
+            }
+
+            .timeline-image {
+                height: 350px;
+            }
+
+            .timeline-image img {
+                object-fit: cover;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="header">
@@ -372,206 +388,252 @@
             <h1 class="header-subtitle">Космическая программа</h1>
         </div>
     </div>
-    
-<div class="divider"></div>
 
-<div class="intro-section">
-    <h2 class="intro-title">Наша История</h2>
-    <p class="intro-text">
-        Советский Союз открыл космическую эру человечества. От запуска первого искусственного спутника Земли до создания орбитальных станций — каждый шаг был прорывом, изменившим представление о возможностях человека.
-    </p>
-</div>
+    <div class="divider"></div>
 
-<div class="divider"></div>
+    <div class="intro-section">
+        <h2 class="intro-title">Наша История</h2>
+        <p class="intro-text">
+            Советский Союз открыл космическую эру человечества. От запуска первого искусственного спутника Земли до создания орбитальных станций — каждый шаг был прорывом, изменившим представление о возможностях человека.
+        </p>
+    </div>
 
-<div class="timeline">
-    <!-- Event 1 -->
-    <div class="timeline-item">
-        <div class="timeline-content">
-            <div class="date">1957</div>
-            <h3 class="event-title">Первый искусственный спутник Земли</h3>
-            <p class="event-description">
-                4 октября 1957 года СССР запустил первый в мире искусственный спутник Земли «Спутник-1». Это событие ознаменовало начало космической эры человечества. Сферический спутник диаметром 58 см был выведен на орбиту ракетой-носителем Р-7 с космодрома Байконур. Спутник летал 92 дня, совершив 1440 оборотов вокруг Земли.
-            </p>
-        </div>
-        <div class="timeline-image">
-            <div class="image-placeholder">
-                <img
+    <div class="divider"></div>
+
+    <div class="timeline">
+        <!-- Event 1 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="date">1957</div>
+                <h3 class="event-title">Первый искусственный спутник Земли</h3>
+                <p class="event-description">
+                    4 октября 1957 года СССР запустил первый в мире искусственный спутник Земли «Спутник-1». Это событие ознаменовало начало космической эры человечества. Сферический спутник диаметром 58 см был выведен на орбиту ракетой-носителем Р-7 с космодрома Байконур. Спутник летал 92 дня, совершив 1440 оборотов вокруг Земли.
+                </p>
+            </div>
+            <div class="timeline-image">
+                <div class="image-placeholder">
+                    <img 
                     class="fit-picture"
-                    src="/assets/images/Sputnik-1.jpg"
-                    alt="Спутник-1" />
+                    src="assets/images/Sputnik-1.jpg"
+                    alt="Спутник-1"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="date">1957</div>
+                <h3 class="event-title">Первое живое существо в космосе</h3>
+                <p class="event-description">
+                    3 ноября 1957 года на орбиту был выведен второй искусственный спутник с первым живым существом на борту — собакой Лайкой. Это был важный эксперимент для изучения воздействия космического полета на живой организм, который открыл путь к полету человека в космос.
+                </p>
+            </div>
+            <div class="timeline-image">
+                <div class="image-placeholder">
+                    <img 
+                    class="fit-picture"
+                    src="assets/images/Layka.jpg"
+                    alt="Лайка"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="date">1959</div>
+                <h3 class="event-title">Первая автоматическая межпланетная станция</h3>
+                <p class="event-description">
+                    2 января 1959 года была запущена автоматическая станция «Луна-1», ставшая первым искусственным объектом, достигшим второй космической скорости и вышедшим на гелиоцентрическую орбиту. Станция пролетела мимо Луны на расстоянии 6000 км.
+                </p>
+            </div>
+            <div class="timeline-image">
+                <div class="image-placeholder">
+                    <img 
+                    class="fit-picture"
+                    src="assets/images/Luna-1.jpg"
+                    alt="Луна-1"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event 4 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="date">1961</div>
+                <h3 class="event-title">Первый полёт человека в космос</h3>
+                <p class="event-description">
+                    12 апреля 1961 года в 9:07 по московскому времени с космодрома Байконур стартовала ракета-носитель «Восток» с кораблем «Восток-1», пилотируемым Юрием Гагариным. Полет длился 108 минут. Знаменитое «Поехали!» Гагарина стало символом эпохи.
+                </p>
+            </div>
+            <div class="timeline-image">
+                <div class="image-placeholder">
+                    <img
+                    class="fit-picture"
+                    src="assets/images/Gagarin.jpg"
+                    alt="Гагарин" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Event 5 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="date">1961</div>
+                <h3 class="event-title">Полёт второго космонавта</h3>
+                <p class="event-description">
+                    6 августа 1961 года на корабле «Восток-2» стартовал Герман Титов. Его полет длился более суток, за это время корабль совершил 17 витков вокруг Земли. Титов стал первым человеком, который провел в космосе более суток и сделал первые фотографии Земли из космоса.
+                </p>
+            </div>
+            <div class="timeline-image">
+                <div class="image-placeholder">
+                    <img 
+                    class="fit-picture"
+                    src="assets/images/Vostok-2.jpg"
+                    alt="Восток-2"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <!-- Event 6 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="date">1965</div>
+                <h3 class="event-title">Первый выход в открытый космос</h3>
+                <p class="event-description">
+                    18 марта 1965 года космонавт Алексей Леонов совершил первый в истории выход в открытый космос. Во время полета на корабле «Восход-2» Леонов провел вне корабля 12 минут 9 секунд. Это был рискованный эксперимент, который доказал возможность работы человека в открытом космосе.
+                </p>
+            </div>
+            <div class="timeline-image">
+                <div class="image-placeholder">
+                    <img 
+                    class="fit-picture"
+                    src="assets/images/Leonov.jpg"
+                    alt="Леонов"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <!-- Event 7 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="date">1970</div>
+                <h3 class="event-title">Первый планетоход на Луне</h3>
+                <p class="event-description">
+                    17 ноября 1970 года на поверхность Луны была доставлена автоматическая станция «Луна-17» с первым в мире планетоходом «Луноход-1». Аппарат проработал на Луне 10 месяцев, преодолел расстояние 10,5 км и передал более 20 тысяч снимков.
+                </p>
+            </div>
+            <div class="timeline-image">
+                <div class="image-placeholder">
+                    <img 
+                    class="fit-picture"
+                    src="assets/images/Lunohod-1.jpg"
+                    alt="Луноход-1"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event 8 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="date">1971</div>
+                <h3 class="event-title">Первая орбитальная станция</h3>
+                <p class="event-description">
+                    19 апреля 1971 года СССР вывел на орбиту первую в мире долговременную орбитальную станцию «Салют-1». Станция массой 18,5 тонн стала прототипом будущих орбитальных станций и открыла новую эру долговременного пребывания человека на орбите.
+                </p>
+            </div>
+            <div class="timeline-image">
+                <div class="image-placeholder">
+                    <img 
+                    class="fit-picture"
+                    src="assets/images/Salyut-1.jpg"
+                    alt="Салют-1"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event 9 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="date">1975</div>
+                <h3 class="event-title">Союз — Аполлон</h3>
+                <p class="event-description">
+                    15 июля 1975 года состоялась историческая стыковка советского корабля «Союз-19» и американского «Аполлон» на орбите. Это был первый международный космический полет, символ разрядки в отношениях между СССР и США, открывший эру международного сотрудничества в космосе.
+                </p>
+            </div>
+            <div class="timeline-image">
+                <div class="image-placeholder">
+                    <img 
+                    class="fit-picture"
+                    src="assets/images/Souz-Appolon.jpg"
+                    alt="Союз-Аполлон"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event 10 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="date">1986</div>
+                <h3 class="event-title">Орбитальная станция «Мир»</h3>
+                <p class="event-description">
+                    20 февраля 1986 года на орбиту был выведен базовый блок станции «Мир» — первой многомодульной орбитальной станции. В течение 15 лет станция постоянно находилась на орбите, приняла 104 космонавта из 12 стран. «Мир» стал символом международного сотрудничества.
+                </p>
+            </div>
+            <div class="timeline-image">
+                <div class="image-placeholder">
+                    <img 
+                    class="fit-picture"
+                    src="assets/images/Mir.jpg"
+                    alt="Мир"/>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Event 2 -->
-    <div class="timeline-item">
-        <div class="timeline-content">
-            <div class="date">1957</div>
-            <h3 class="event-title">Первое живое существо в космосе</h3>
-            <p class="event-description">
-                3 ноября 1957 года на орбиту был выведен второй искусственный спутник с первым живым существом на борту — собакой Лайкой. Это был важный эксперимент для изучения воздействия космического полета на живой организм, который открыл путь к полету человека в космос.
-            </p>
-        </div>
-        <div class="timeline-image">
-            <div class="image-placeholder">Лайка</div>
-        </div>
-    </div>
+    <div class="divider"></div>
 
-    <!-- Event 3 -->
-    <div class="timeline-item">
-        <div class="timeline-content">
-            <div class="date">1959</div>
-            <h3 class="event-title">Первая автоматическая межпланетная станция</h3>
-            <p class="event-description">
-                2 января 1959 года была запущена автоматическая станция «Луна-1», ставшая первым искусственным объектом, достигшим второй космической скорости и вышедшим на гелиоцентрическую орбиту. Станция пролетела мимо Луны на расстоянии 6000 км.
-            </p>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Статьи и материалы</h4>
+                <ul>
+                    <li><a href="https://prosv.ru/articles/kosmicheskaya-programma-sssr-ot-kolybeli-do-kontsa/" target="_blank">Космическая программа СССР</a></li>
+                    <li><a href="https://r4uab.ru/istoriya-sputnikov/sputnik-1/" target="_blank">История Спутника-1</a></li>
+                    <li><a href="https://znanierussia.ru/articles/%D0%93%D0%B0%D0%B3%D0%B0%D1%80%D0%B8%D0%BD,_%D0%AE%D1%80%D0%B8%D0%B9_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B5%D0%B5%D0%B2%D0%B8%D1%87" target="_blank">Юрий Гагарин</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Космонавтика</h4>
+                <ul>
+                    <li><a href="https://ru.ruwiki.ru/wiki/%D0%92%D0%BE%D1%81%D1%82%D0%BE%D0%BA_(%D0%BA%D0%BE%D1%81%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0)" target="_blank">Программа «Восток»</a></li>
+                    <li><a href="http://www.tvroscosmos.ru/2844/" target="_blank">Станции «Салют»</a></li>
+                    <li><a href="https://science.mail.ru/articles/4941-orbitalnaya-stanciya-mir/" target="_blank">Станция «Мир»</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Достижения</h4>
+                <ul>
+                    <li><a href="https://www.ixbt.com/news/2025/10/29/pochti-7-chasov-za-bortom-mks-rossijskie-kosmonavty-zavershili-vyhod-v-otkrytyj-kosmos.html" target="_blank">Выход в открытый космос</a></li>
+                    <li><a href="https://gmik.ru/2022/11/17/lunohod-1-puteshestvie-po-sputniku-zemli/" target="_blank">Луноход-1</a></li>
+                    <li><a href="https://museumgagarin.ru/news/missiya_soyuz_appolon_/" target="_blank">Союз — Аполлон</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Ресурсы</h4>
+                <ul>
+                    <li><a href="https://www.gctc.ru/main.php?id=1279" target="_blank">Хронология полётов</a></li>
+                    <li><a href="https://www.russian.space/kosmodromy/kosmodrom-baykonur/" target="_blank">Космодром Байконур</a></li>
+                    <li><a href="https://www.roscosmos.ru/#pilot" target="_blank">Роскосмос</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="timeline-image">
-            <div class="image-placeholder">Луна-1</div>
+        <div class="footer-bottom">
+            <p>© 2026 История космической программы СССР. Образовательный проект.</p>
         </div>
-    </div>
-
-    <!-- Event 4 -->
-    <div class="timeline-item">
-        <div class="timeline-content">
-            <div class="date">1961</div>
-            <h3 class="event-title">Первый полёт человека в космос</h3>
-            <p class="event-description">
-                12 апреля 1961 года в 9:07 по московскому времени с космодрома Байконур стартовала ракета-носитель «Восток» с кораблем «Восток-1», пилотируемым Юрием Гагариным. Полет длился 108 минут. Знаменитое «Поехали!» Гагарина стало символом эпохи.
-            </p>
-        </div>
-        <div class="timeline-image">
-            <div class="image-placeholder">Гагарин</div>
-        </div>
-    </div>
-
-    <!-- Event 5 -->
-    <div class="timeline-item">
-        <div class="timeline-content">
-            <div class="date">1961</div>
-            <h3 class="event-title">Полёт второго космонавта</h3>
-            <p class="event-description">
-                6 августа 1961 года на корабле «Восток-2» стартовал Герман Титов. Его полет длился более суток, за это время корабль совершил 17 витков вокруг Земли. Титов стал первым человеком, который провел в космосе более суток и сделал первые фотографии Земли из космоса.
-            </p>
-        </div>
-        <div class="timeline-image">
-            <div class="image-placeholder">Восток-2</div>
-        </div>
-    </div>
-
-    <!-- Event 6 -->
-    <div class="timeline-item">
-        <div class="timeline-content">
-            <div class="date">1965</div>
-            <h3 class="event-title">Первый выход в открытый космос</h3>
-            <p class="event-description">
-                18 марта 1965 года космонавт Алексей Леонов совершил первый в истории выход в открытый космос. Во время полета на корабле «Восход-2» Леонов провел вне корабля 12 минут 9 секунд. Это был рискованный эксперимент, который доказал возможность работы человека в открытом космосе.
-            </p>
-        </div>
-        <div class="timeline-image">
-            <div class="image-placeholder">Леонов</div>
-        </div>
-    </div>
-
-    <!-- Event 7 -->
-    <div class="timeline-item">
-        <div class="timeline-content">
-            <div class="date">1970</div>
-            <h3 class="event-title">Первый планетоход на Луне</h3>
-            <p class="event-description">
-                17 ноября 1970 года на поверхность Луны была доставлена автоматическая станция «Луна-17» с первым в мире планетоходом «Луноход-1». Аппарат проработал на Луне 10 месяцев, преодолел расстояние 10,5 км и передал более 20 тысяч снимков.
-            </p>
-        </div>
-        <div class="timeline-image">
-            <div class="image-placeholder">Луноход-1</div>
-        </div>
-    </div>
-
-    <!-- Event 8 -->
-    <div class="timeline-item">
-        <div class="timeline-content">
-            <div class="date">1971</div>
-            <h3 class="event-title">Первая орбитальная станция</h3>
-            <p class="event-description">
-                19 апреля 1971 года СССР вывел на орбиту первую в мире долговременную орбитальную станцию «Салют-1». Станция массой 18,5 тонн стала прототипом будущих орбитальных станций и открыла новую эру долговременного пребывания человека на орбите.
-            </p>
-        </div>
-        <div class="timeline-image">
-            <div class="image-placeholder">Салют-1</div>
-        </div>
-    </div>
-
-    <!-- Event 9 -->
-    <div class="timeline-item">
-        <div class="timeline-content">
-            <div class="date">1975</div>
-            <h3 class="event-title">Союз — Аполлон</h3>
-            <p class="event-description">
-                15 июля 1975 года состоялась историческая стыковка советского корабля «Союз-19» и американского «Аполлон» на орбите. Это был первый международный космический полет, символ разрядки в отношениях между СССР и США, открывший эру международного сотрудничества в космосе.
-            </p>
-        </div>
-        <div class="timeline-image">
-            <div class="image-placeholder">Союз-Аполлон</div>
-        </div>
-    </div>
-
-    <!-- Event 10 -->
-    <div class="timeline-item">
-        <div class="timeline-content">
-            <div class="date">1986</div>
-            <h3 class="event-title">Орбитальная станция «Мир»</h3>
-            <p class="event-description">
-                20 февраля 1986 года на орбиту был выведен базовый блок станции «Мир» — первой многомодульной орбитальной станции. В течение 15 лет станция постоянно находилась на орбите, приняла 104 космонавта из 12 стран. «Мир» стал символом международного сотрудничества.
-            </p>
-        </div>
-        <div class="timeline-image">
-            <div class="image-placeholder">Мир</div>
-        </div>
-    </div>
-</div>
-
-<div class="divider"></div>
-
-<footer>
-    <div class="footer-content">
-        <div class="footer-section">
-            <h4>Литература</h4>
-            <ul>
-                <li>История космонавтики</li>
-                <li>Советская космическая программа</li>
-                <li>Архивные материалы</li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>О проекте</h4>
-            <ul>
-                <li>Наша миссия</li>
-                <li>Исследования</li>
-                <li>Контакты</li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Хронология</h4>
-            <ul>
-                <li>1957 — 1965</li>
-                <li>1966 — 1975</li>
-                <li>1976 — 1991</li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Ресурсы</h4>
-            <ul>
-                <li>Документы</li>
-                <li>Фотоархив</li>
-                <li>Видеоматериалы</li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2026 История космической программы СССР. Образовательный проект.</p>
-    </div>
-</footer>
-
+    </footer>
 </body>
 </html>
